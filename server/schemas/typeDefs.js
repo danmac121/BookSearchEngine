@@ -23,14 +23,15 @@ type User {
   }
   
   type Mutation {
-    addUser(username: String!, email: String!, password: String!): User
-    login(email: String!, password: String!): AuthData
+    createUser(username: String!, email: String!, password: String!): Auth
+    login(email: String!, password: String!): Auth
     saveBook(authors: [String], description: String!, bookId: String!, image: String, link: String, title: String!): User
-    removeBook(bookId: String!): User
+    deleteBook(bookId: String!): User
   }
   
-  type AuthData {
-    token: String!
-    user: User!
+  type Auth {
+    token: ID!
+    user: User
   }
 `
+module.exports = typeDefs;
